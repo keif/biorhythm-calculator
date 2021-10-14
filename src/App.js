@@ -1,25 +1,31 @@
-import {
-  IonApp,
-  IonContent,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-} from '@ionic/react';
-import React from 'react';
+import { IonApp, IonContent, IonDatetime, IonHeader, IonItem, IonLabel, IonTitle, IonToolbar, } from '@ionic/react';
+import React, { useState } from 'react';
+import BiorhythmCard from "./components/BiorhythmCard";
 
 function App() {
-  return (
-    <IonApp>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>My App</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
-        <p>Add some content here…</p>
-      </IonContent>
-    </IonApp>
-  );
+	const [ birthDate, setBirthDate ] = useState()
+
+	const onBirthDateChange = (event) => {
+		setBirthDate(event.detail.value)
+	}
+
+	return (
+		<IonApp>
+			<IonHeader>
+				<IonToolbar>
+					<IonTitle>Biorhythms</IonTitle>
+				</IonToolbar>
+			</IonHeader>
+			<IonContent className="ion-padding">
+				<IonItem>
+					<IonLabel position={ `stacked` }>Date of
+						Birth:</IonLabel>
+					<IonDatetime displayFormat={ `D MMM YYYY` } onIonChange={ onBirthDateChange } value={ birthDate }/>
+				</IonItem>
+				<BiorhythmCard targetDate={ birthDate }/>
+			</IonContent>
+		</IonApp>
+	);
 }
 
 export default App;
