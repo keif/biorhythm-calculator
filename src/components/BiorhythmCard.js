@@ -6,7 +6,7 @@ import { calculateBiorhythms } from "../services/calculations";
 const BiorhythmCard = ({ birthDate, targetDate }) => {
 	const formatDate = (isoString) => dayjs(isoString).format(`D MMM YYYY`)
 	const headerText = formatDate(targetDate)
-	const {  physical, emotional, intellectual } = calculateBiorhythms(birthDate, targetDate)
+	const { physical, emotional, intellectual } = calculateBiorhythms(birthDate, targetDate)
 
 	return (
 		<IonCard className={ `ion-text-center` }>
