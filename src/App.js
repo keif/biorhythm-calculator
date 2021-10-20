@@ -4,10 +4,14 @@ import BiorhythmCard from "./components/BiorhythmCard";
 
 function App() {
 	const [ birthDate, setBirthDate ] = useState()
-	const targetDate = new Date().toISOString()
+	const [ targetDate, setTargetDate ] = useState(new Date().toISOString())
 
 	const onBirthDateChange = (event) => {
 		setBirthDate(event.detail.value)
+	}
+
+	const onTargetDateChange = (event) => {
+		setTargetDate(event.detail.value)
 	}
 
 	return (
@@ -22,6 +26,8 @@ function App() {
 					<IonLabel position={ `stacked` }>Date of
 						Birth:</IonLabel>
 					<IonDatetime displayFormat={ `D MMM YYYY` } onIonChange={ onBirthDateChange } value={ birthDate }/>
+					<IonLabel position={ `stacked` }>Target Date:</IonLabel>
+					<IonDatetime displayFormat={ `D MMM YYYY` } onIonChange={ onTargetDateChange } value={ targetDate }/>
 				</IonItem>
 				{ birthDate &&
 					<BiorhythmCard birthDate={ birthDate } targetDate={ targetDate }/>
