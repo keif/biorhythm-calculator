@@ -5,7 +5,9 @@ export const calculateBiorhythm = (birthDate, targetDate, cycle) => {
 	const targetDay = dayjs(targetDate).startOf(`day`)
 	const diff = targetDay.diff(birthDay, `days`)
 
-	return Math.sin(2 * Math.PI * diff / cycle)
+	const result = Math.sin(2 * Math.PI * diff / cycle)
+
+	return result
 }
 
 export const calculateBiorhythms = (birthDate, targetDate) => {
